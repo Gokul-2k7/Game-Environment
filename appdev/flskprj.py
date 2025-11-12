@@ -1,3 +1,4 @@
+import os
 from flask import Flask,request,render_template,redirect,url_for
 app=Flask(__name__)
 login={}
@@ -29,4 +30,6 @@ def register():
 def details(name,age):
     return f"{name} age is {age}"
 
-app.run(debug=True,port=8000)
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
